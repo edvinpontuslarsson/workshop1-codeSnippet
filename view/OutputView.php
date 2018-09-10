@@ -19,7 +19,7 @@ class OutputView
     public function echoHtmlOutput ($post) {
         $numberOfLines = $this->countLines($post);
         echo "$numberOfLines lines of code.";
-        echo '<p><a href="/workshop-1">Analysera ny snippet</a></p>';
+        echo '<p><a href="/workshop-1">Analyze new code snippet</a></p>';
     }
 
     public function countLines($post) {
