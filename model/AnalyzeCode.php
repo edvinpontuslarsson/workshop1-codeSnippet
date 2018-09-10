@@ -2,7 +2,8 @@
 
 class AnalyzeCode 
 {
-    public function countLinesOfCode($post) {
+    public function countLinesOfCode($post) 
+    {
         $trimmedSnippet = trim($post);
         $trimmedSnippet = nl2br($trimmedSnippet);
 

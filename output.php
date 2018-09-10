@@ -9,5 +9,3 @@ $outputView = new OutputView();
 $htmlOutput = $outputView->response();
 
 $layoutView->showHtmlLayout($htmlOutput);
-
-echo '<p><a href="/workshop-1">Analyze new code snippet</a></p>';

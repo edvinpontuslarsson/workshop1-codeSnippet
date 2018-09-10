@@ -23,6 +23,6 @@ class OutputView
     public function getHtmlOutput ($post) {
         $analyzeCode = new AnalyzeCode();
         $numberOfLines = $analyzeCode->countLinesOfCode($post);
-        return "<p>{$numberOfLines} lines of code.</p>";        
+        return "<p>$numberOfLines lines of code.</p>";       
     }   
 }
