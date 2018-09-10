@@ -1,5 +1,7 @@
 <?php
 
+require_once('model/AnalyzeCode.php');
+
 class OutputView
 {
     private static $codeSnippet = 'InputView::CodeSnippet';
@@ -19,18 +21,8 @@ class OutputView
     }
 
     public function getHtmlOutput ($post) {
-        $numberOfLines = $this->countLinesOfCode($post);
-        return "$numberOfLines lines of code." +
-        '<p><a href="/workshop-1">Analyze new code snippet</a></p>';
-    }
-
-    public function countLinesOfCode($post) {
-        $trimmedSnippet = trim($post);
-        $trimmedSnippet = nl2br($trimmedSnippet);
-
-        $numberOfLines = preg_split('/(<br \/>)/', $trimmedSnippet);
-        $numberOfLines = count($numberOfLines);
-
-        return $numberOfLines;
-    }    
+        $analyzeCode = new AnalyzeCode();
+        $numberOfLines = $analyzeCode->countLinesOfCode($post);
+        return "<p>{$numberOfLines} lines of code.</p>";        
+    }   
 }
