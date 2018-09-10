@@ -5,14 +5,14 @@ class OutputView
     private static $codeSnippet = 'InputView::CodeSnippet';
 
     public function response() {
-        $this->retrieveIncomingPost();
+        $post = $this->retrieveIncomingPost();
+        $this->echoHtmlOutput($post);
     }
 
     public function retrieveIncomingPost() {
         if (isset($_POST[self::$codeSnippet])) {
             $post = $_POST[self::$codeSnippet];
-
-            $this->echoHtmlOutput($post);
+            return $post;
         }
     }
 
@@ -22,7 +22,7 @@ class OutputView
         echo '<p><a href="/workshop-1">Analyze new code snippet</a></p>';
     }
 
-    public function countLines($post) {
+    public function countLinesOfCode($post) {
         $trimmedSnippet = trim($post);
         $trimmedSnippet = nl2br($trimmedSnippet);
 
