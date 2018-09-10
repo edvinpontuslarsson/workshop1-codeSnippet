@@ -7,7 +7,7 @@ class InputView
     public function renderHTMLInputField()
     {
         return '
-        <form action="view/OutputView.php" method="POST">
+        <form action="output.php" method="POST">
         <fieldset>
         <textarea name="' . self::$codeSnippet . '"></textarea>
         <input type="submit" value="submit"
