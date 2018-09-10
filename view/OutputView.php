@@ -5,22 +5,33 @@ class OutputView
     private static $codeSnippet = 'InputView::CodeSnippet';
 
     public function response() {
-        $this->postData();
+        $this->retrieveIncomingPost();
     }
 
-    public function postData() {
+    public function retrieveIncomingPost() {
         if (isset($_POST[self::$codeSnippet])) {
-            $this->countLines($_POST[self::$codeSnippet]);
+            $post = $_POST[self::$codeSnippet];
+
+            $this->echoHtmlOutput($post);
         }
     }
 
-    public function countLines() {
-        $trimmedSnippet = trim(self::$codeSnippet);
+    public function echoHtmlOutput ($post) {
+        $numberOfLines = $this->countLines($post);
+        echo "$numberOfLines lines of code.";
+        echo '<p><a href="/workshop-1">Analysera ny snippet</a></p>';
+    }
+
+    public function countLines($post) {
+        $trimmedSnippet = trim($post);
         $trimmedSnippet = nl2br($trimmedSnippet);
 
         $numberOfLines = preg_split('/(<br \/>)/', $trimmedSnippet);
         $numberOfLines = count($numberOfLines);
 
-        echo $numberOfLines;
-    }
+        return $numberOfLines;
+    }    
 }
+
+$outputView = new OutputView();
+$outputView->response();
