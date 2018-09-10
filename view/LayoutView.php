@@ -12,7 +12,7 @@ class LayoutView {
             <title>Document</title>
         </head>
         <body>
-            ' . $inputView->render() . '
+            ' . $inputView->response() . '
         </body>
         </html>';
     }
